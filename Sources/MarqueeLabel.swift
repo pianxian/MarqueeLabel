@@ -22,13 +22,13 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
      - Continuous: Continuously scrolls left (with a pause at the original position if animationDelay is set).
      - ContinuousReverse: Continuously scrolls right (with a pause at the original position if animationDelay is set).
      */
-    public enum MarqueeType: CaseIterable {
-        case left
-        case leftRight
-        case right
-        case rightLeft
-        case continuous
-        case continuousReverse
+  @objc  public enum MarqueeType: Int {
+        case left = 0
+        case leftRight = 1
+        case right = 2
+        case rightLeft = 3
+        case continuous = 4
+        case continuousReverse = 5
     }
     
     //
@@ -58,7 +58,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
      - SeeAlso: textAlignment
      - SeeAlso: leadingBuffer
      */
-    open var type: MarqueeType = .continuous {
+   @objc public var type: MarqueeType = .continuous {
         didSet {
             if type == oldValue {
                 return
@@ -625,7 +625,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         }
     }
     
-    private func updateAndScroll() {
+  @objc  public func updateAndScroll() {
         // Do not automatically begin scroll if tapToScroll is true
         updateAndScroll(overrideHold: false)
     }
